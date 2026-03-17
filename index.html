@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ứng dụng quản lý danh sách công việc đơn giản, hiện đại với localStorage." />
+  <title>Todo List ✅</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="app-wrapper">
+
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-emoji">📝</div>
+      <h1>Danh Sách Công Việc</h1>
+      <p class="subtitle">Hôm nay bạn cần làm gì?</p>
+    </header>
+
+    <!-- Stats bar -->
+    <div class="stats-bar">
+      <span id="stat-total">0 công việc</span>
+      <span class="divider">·</span>
+      <span id="stat-done">0 hoàn thành</span>
+      <span class="divider">·</span>
+      <span id="stat-pending">0 còn lại</span>
+    </div>
+
+    <!-- Input Form -->
+    <div class="input-card">
+      <form id="todo-form" autocomplete="off">
+        <input
+          type="text"
+          id="todo-input"
+          class="todo-input"
+          placeholder="Nhập công việc cần làm..."
+          maxlength="200"
+        />
+        <button type="submit" class="btn-add" id="btn-add">
+          <span class="btn-icon">+</span>
+          <span>Thêm</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all" id="filter-all">Tất cả</button>
+      <button class="filter-btn" data-filter="pending" id="filter-pending">Chưa xong</button>
+      <button class="filter-btn" data-filter="done" id="filter-done">Hoàn thành</button>
+    </div>
+
+    <!-- Todo List -->
+    <main>
+      <ul class="todo-list" id="todo-list" role="list"></ul>
+
+      <!-- Empty State -->
+      <div class="empty-state" id="empty-state" aria-live="polite">
+        <div class="empty-emoji">🎉</div>
+        <p>Không có công việc nào!</p>
+        <small>Thêm việc cần làm ở trên nhé.</small>
+      </div>
+    </main>
+
+    <!-- Clear all button -->
+    <div class="actions-bar" id="actions-bar" style="display:none">
+      <button class="btn-clear" id="btn-clear-done">🗑 Xóa tất cả đã xong</button>
+    </div>
+
+    <footer class="app-footer">
+      <p>Dữ liệu được lưu tự động trên trình duyệt của bạn 🔒</p>
+    </footer>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
