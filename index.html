@@ -17,7 +17,7 @@
     <header class="app-header">
       <div class="header-emoji">📝</div>
       <h1>Danh Sách Công Việc</h1>
-      <p class="subtitle">Hôm nay bạn cần làm gì?</p>
+      <p class="subtitle" id="current-date">Hôm nay bạn cần làm gì?</p>
     </header>
 
     <!-- Stats bar -->
@@ -32,18 +32,58 @@
     <!-- Input Form -->
     <div class="input-card">
       <form id="todo-form" autocomplete="off">
+        <div class="input-row">
+          <input
+            type="text"
+            id="todo-input"
+            class="todo-input"
+            placeholder="Nhập công việc cần làm..."
+            maxlength="200"
+          />
+          <button type="submit" class="btn-add" id="btn-add">
+            <span class="btn-icon">+</span>
+            <span>Thêm</span>
+          </button>
+        </div>
+        <div class="date-row">
+          <label for="due-date-input" class="due-label">📅 Hạn chót:</label>
+          <input type="date" id="due-date-input" class="due-input" />
+        </div>
+      </form>
+    </div>
+
+    <!-- Template Panel Toggle -->
+    <div class="template-toggle-bar">
+      <button class="btn-toggle-templates" id="btn-toggle-templates">📋 Mẫu hàng tháng</button>
+    </div>
+
+    <!-- Template Panel -->
+    <div class="template-panel" id="template-panel">
+      <div class="template-header">
+        <h2>📋 Mẫu Công Việc Cố Định</h2>
+        <p class="template-desc">Lưu các việc làm hàng tháng → nhấn nút để tạo nhanh cho tháng mới</p>
+      </div>
+
+      <form id="template-form" autocomplete="off" class="template-form">
         <input
           type="text"
-          id="todo-input"
+          id="template-input"
           class="todo-input"
-          placeholder="Nhập công việc cần làm..."
+          placeholder="Tên công việc mẫu..."
           maxlength="200"
         />
-        <button type="submit" class="btn-add" id="btn-add">
+        <button type="submit" class="btn-add btn-template-add">
           <span class="btn-icon">+</span>
-          <span>Thêm</span>
+          <span>Lưu mẫu</span>
         </button>
       </form>
+
+      <ul class="template-list" id="template-list"></ul>
+      <p class="template-empty" id="template-empty">Chưa có mẫu nào. Thêm công việc cố định ở trên!</p>
+
+      <button class="btn-apply" id="btn-apply-templates" disabled>
+        🚀 Tạo tất cả cho tháng sau
+      </button>
     </div>
 
     <!-- Filter Buttons -->
@@ -75,6 +115,9 @@
     </footer>
 
   </div>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast"></div>
 
   <script src="app.js"></script>
 </body>
